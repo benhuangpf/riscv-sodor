@@ -1,0 +1,20 @@
+RISCV/verilog
+iverilog -o mid Final_tb.v -D fibo
+vvp -n mid -lxt2
+
+RISCV/chisel
+sbt 'testOnly rv32isc.TopTest -- -DwriteVcd=1'
+
+chipyard
+source env.sh
+generators/riscv-sodor/test/custom-bmarks
+make
+sims/verilator
+make debug CONFIG=TinyRocketConfig
+make CONFIG=TinyRocketConfig run-binary-debug BINARY=/home/ben/chipyard/generators/riscv-sodor/test/custom-bmarks/mix.riscv
+./simulator-chipyard.harness-RV32RocketConfig-debug /home/ben/chipyard/generators/riscv-sodor/test/custom-bmarks/mix.riscv
+./simulator-chipyard.harness-Sodor1StageConfig-debug /home/ben/chipyard/generators/riscv-sodor/test/custom-bmarks/mix.riscv
+./simulator-chipyard.harness-TinyRocketConfig-debug /home/ben/chipyard/generators/riscv-sodor/test/custom-bmarks/mix.riscv
+
+riscv64-unknown-elf-objcopy -O binary mix.riscv mix.bin
+python bin2hex.py mix.bin mix.hex

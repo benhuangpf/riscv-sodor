@@ -254,6 +254,15 @@ class DatPath(implicit val p: Parameters, val conf: SodorCoreParams) extends Mod
    // Printout
    // pass output through the spike-dasm binary (found in riscv-tools) to turn
    // the DASM(%x) into a disassembly string.
+
+   // when (pc_reg === "h800010ac".U) {
+   //    printf("result, %d\nans, 55\n", alu_op1)
+   //    when (alu_op1 === 55.U) {        
+   //      printf("The answer is correct.\n")
+   //    }    
+   //    .otherwise {printf("The answer is wrong.\n")}
+   // }
+   
    printf("Cyc= %d [%d] pc=[%x] W[r%d=%x][%d] Op1=[r%d][%x] Op2=[r%d][%x] inst=[%x] %c%c%c DASM(%x)\n",
       csr.io.time(31,0),
       csr.io.retire,

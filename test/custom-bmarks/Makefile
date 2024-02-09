@@ -1,12 +1,12 @@
 SHELL := /bin/sh
 
-CC := riscv32-unknown-elf-gcc -march=rv32i -mabi=ilp32
-OBJDUMP := riscv32-unknown-elf-objdump
+CC := riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32
+OBJDUMP := riscv64-unknown-elf-objdump
 
 CFLAGS := -O0 -Wall -g -std=gnu99 -mcmodel=medany -fno-common -fno-builtin-printf -I ../env
 LDFLAGS := -static -nostdlib -nostartfiles -T ../env/test.ld
 
-programs := mix
+programs := simple
 bins := $(addsuffix .riscv,$(programs))
 dumps := $(addsuffix .dump,$(programs))
 logs := $(addsuffix .out,$(programs))
