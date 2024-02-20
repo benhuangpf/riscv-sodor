@@ -6,7 +6,7 @@ OBJDUMP := riscv64-unknown-elf-objdump
 CFLAGS := -O0 -Wall -g -std=gnu99 -mcmodel=medany -fno-common -fno-builtin-printf -I ../env
 LDFLAGS := -static -nostdlib -nostartfiles -T ../env/test.ld
 
-programs := simple
+programs := test/simple
 bins := $(addsuffix .riscv,$(programs))
 dumps := $(addsuffix .dump,$(programs))
 logs := $(addsuffix .out,$(programs))

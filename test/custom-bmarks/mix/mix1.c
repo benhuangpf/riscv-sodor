@@ -1,4 +1,4 @@
-#include "util.h"
+// #include "util.h"
 int test(int n)
 {
     if (n == 1 || n == 2)
@@ -13,7 +13,7 @@ int test(int n)
 }
 int main()
 {
-    int n = 10;
+    int n = 3;
     int ret = test(n);
 
     // return (ret == 55)? 0:-1;
